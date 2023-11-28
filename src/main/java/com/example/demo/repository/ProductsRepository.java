@@ -1,10 +1,11 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Product;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ProductsRepository {
+import java.util.List;
+import java.util.Set;
 
-    Product getProductById(Long id);
+public interface ProductsRepository extends CrudRepository<Product, Long> {
 
-    Product addProduct(Product product);
 }
