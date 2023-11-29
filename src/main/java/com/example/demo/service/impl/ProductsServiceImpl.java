@@ -4,11 +4,10 @@ import com.example.demo.entity.Product;
 import com.example.demo.repository.ProductsRepository;
 import com.example.demo.service.ProductsService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -25,8 +24,8 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public Iterable<Product> getAllProducts() {
-        return productsRepository.findAll();
+    public Page<Product> getProducts(Pageable pageable) {
+        return productsRepository.findAll(pageable);
     }
 
     @Override

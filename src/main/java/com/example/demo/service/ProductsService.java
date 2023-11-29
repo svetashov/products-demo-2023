@@ -1,13 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Product;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ProductsService {
 
     Product getProductById(Long id);
 
-    Iterable<Product> getAllProducts();
+    Page<Product> getProducts(Pageable pageable);
 
     Product addProduct(Product product);
 

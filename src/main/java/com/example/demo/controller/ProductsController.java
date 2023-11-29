@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.PageDto;
 import com.example.demo.dto.ProductDto;
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductsService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @RestController
@@ -24,8 +23,8 @@ public class ProductsController {
     }
 
     @GetMapping
-    public Iterable<Product> getAllProducts() {
-        return productsService.getAllProducts();
+    public Page<Product> getProducts(PageDto pageDto) {
+        return productsService.getProducts(pageDto.getPageable());
     }
 
     @PostMapping
